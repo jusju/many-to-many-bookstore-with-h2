@@ -1,0 +1,17 @@
+package k2020.manytomany.domain;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource
+public interface BookRepository extends CrudRepository <Book, Long> {
+	
+	List<Book> findByTitle(String title);
+	//List<Book> findByAuthorRest(@Param("author") String author);
+	//List<Book> findByRest(@Param("author") String author);
+	
+
+}

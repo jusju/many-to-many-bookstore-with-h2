@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Reader & Books</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add new reader</h1>
+	<div>
+		<form th:object="${newReader}" th:action="@{saveReader}" action="#"
+			method="post">
+			<label for="name">Nimi</label> <input type="text" id="name"
+				th:field="*{name}" /></br>
+			<p>
+				<label for="books">Books</label> </label>
+			</p>
+			<ul>
+				<li th:each="book: ${books}"><input type="checkbox"
+					th:field="*{multiCheckboxSelectedValues}"
+					th:value="${checkboxValue}" /> <label
+					th:for="${#ids.prev('books')}" th:text="${checkboxValue}"></label>
+				</li>
+			</ul>
+			<input type="submit" value="Save"></input></br>
+		</form>
+	</div>
+</body>
+</html>

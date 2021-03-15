@@ -1,0 +1,30 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit book information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<form th:object="${editBook}" th:action="@{/saveBook}" action="#" method="post">
+
+			<input type="hidden" id="id" th:field="*{id}"/>
+			<label for="title">Kirjan nimi </label> 
+			<input type="text" id="title" th:field="${editBook.title}" />
+			<label for="author">Kirjailija </label> 
+			<input type="text" id="author" th:field="${editBook.author}" />
+			<label for="year">Vuosi</label> 
+			<input type="text" id="year" th:field="${editBook.year}" /><p>
+			
+			<label for="categories">Laji</label>
+			 <select id="categories" th:field="*{category}">
+       			<option th:each="category: ${categories}" 
+       			th:value="${category.id}" th:text="${category.name}"></option>
+    		</select></p>
+			<input type="submit" value="Update"></input>
+		</form>
+
+	</div>
+</body>
+</html>

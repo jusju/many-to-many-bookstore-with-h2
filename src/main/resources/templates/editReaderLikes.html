@@ -1,0 +1,27 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit book information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<form th:object="${editReader}" th:action="@{/saveReaderLikes}" action="#" method="post">
+
+			<input type="hidden" id="id" th:field="*{id}"/>
+			<label for="name">Lukijan nimi</label><br>
+			<input type="text" id="name" th:field="${editReader.name}" />
+			
+			<label for="books">Kirja</label>
+			 <select id="books" th:field="*{likedBooks}" multiple="multiple">
+       			<option th:each="book: ${selectableBooks}" 
+       					th:value="${book.id}" 
+       					th:text="${book.title}"></option>
+    		</select></p>
+			<input type="submit" value="saveReaderLikes"></input>
+		</form>
+
+	</div>
+</body>
+</html>

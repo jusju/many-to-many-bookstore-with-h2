@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Book list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Reader likes...</h1>
+	<table>
+		<tr>
+			<th>Lukijan nimi</th>
+			<th>Lukijan suosikkikirjat</th>
+		</tr>
+
+		<tr th:each="reader: ${readers}">
+			<td th:text="${reader.name}">
+			<td><span th:each="book: ${reader.likedBooks}"> <span
+					th:text="${book.title}"> </span>
+		
+			</td>
+			<td><a th:href="@{/editReaderLikes/{id}(id=${reader.id})}">Edit</a>
+		</tr>
+	</table>
+
+</body>
+</html>
